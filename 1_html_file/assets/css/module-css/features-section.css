@@ -66,7 +66,7 @@
     transition-delay: 0.1s;
 }
 .features-style1_top_text ul li:hover i {
-    color: #2739a7;
+    color: #1a58a0;
 }
 
 
@@ -98,7 +98,7 @@
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: #2739a7;
+    background-color: #1a58a0;
     transition: .5s;
     transform: perspective(400px) scaleX(0);
     -webkit-transform-origin: bottom;
@@ -186,7 +186,7 @@
 .single-features-style1 .icon-holder span::before {
     position: relative;
     display: block;
-    color: #2739a7;
+    color: #1a58a0;
     font-size: 160px;
     line-height: 0.8em;
     transition: all 500ms linear;
@@ -572,7 +572,7 @@
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: #2739a7;
+    background-color: #1a58a0;
     transition: .5s;
     transform: perspective(400px) scaleX(0);
     -webkit-transform-origin: bottom;
@@ -672,7 +672,7 @@
     position: relative;
     display: inline-block;
     top: 2px;
-    color: #2739a7;
+    color: #1a58a0;
     font-size: 20px;
     line-height: 20px;
     padding-right: 10px;
@@ -706,7 +706,7 @@
     padding-top: 9px;
 }
 .features-style1-area.about-page2 .features-style1_top_text ul li i {
-    color: #2739a7;
+    color: #1a58a0;
 }
 
 
@@ -796,7 +796,7 @@
     position: relative;
     display: block;
     width: 85px;
-    background: #2739a7;
+    background: #1a58a0;
     transition: all 500ms linear;
     transition-delay: 0.1s;
 }

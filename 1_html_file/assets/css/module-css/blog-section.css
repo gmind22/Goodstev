@@ -17,7 +17,7 @@
     left: 0;
     bottom: 0;
     right: 0;
-    background: #2739a7;
+    background: #1a58a0;
     content: "";
     opacity: 0.80;
 }
@@ -258,7 +258,7 @@
     display: block;
 }
 .single-blog-style1 .text-holder .readmore-button a{
-    color: #2739a7;
+    color: #1a58a0;
     font-size: 14px;
     line-height: 24px;
     font-weight: 700;
@@ -868,8 +868,8 @@
 .styled-pagination li:hover a,
 .styled-pagination li.active a{
     color: #ffffff;
-    background: #2739a7;
-    border-color: #2739a7 !important;
+    background: #1a58a0;
+    border-color: #1a58a0 !important;
 }
 
 .styled-pagination li.prev a,
@@ -1000,7 +1000,7 @@
 .blog_list_post_style2{
     position: relative;
     display: block;
-    background: #2739a7;
+    background: #1a58a0;
     padding: 50px 60px 60px;
 }
 .blog_list .blog_list_post_style2 .text-holder {
@@ -1049,7 +1049,7 @@
 .single-sidebar .title {
     position: relative;
     display: block;
-    background: #2739a7;
+    background: #1a58a0;
     padding: 22px 0px 22px 25px;
 }
 .single-sidebar .title h3 {
@@ -1119,7 +1119,7 @@
     right: 0px;
     width: 50px;
     height: 60px;
-    color: #2739a7;
+    color: #1a58a0;
     font-size: 16px;
     line-height: 60px;
     display: block;
@@ -1171,7 +1171,7 @@
 .single-sidebar .sidebar-categories-box li a span::before {
     position: relative;
     display: inline-block;
-    color: #2739a7;
+    color: #1a58a0;
     font-size: 20px;
     font-weight: 400;
     padding-right: 10px;
@@ -1262,7 +1262,7 @@
     transition-delay: 0.1s;
 }
 .single-sidebar .recent-posts li .title-box p{
-    color: #2739a7;
+    color: #1a58a0;
     font-size: 14px;
     line-height: 18px;
     font-weight: 400;
@@ -1302,8 +1302,8 @@
 }
 .single-sidebar .popular-tag li:hover a{
     color: #ffffff;
-    background: #2739a7;
-    border-color: #2739a7;
+    background: #1a58a0;
+    border-color: #1a58a0;
 }
 
 
@@ -1395,7 +1395,7 @@
     margin: 0 0 21px;
 }
 .blog-details-author-box h4{
-    color: #2739a7;
+    color: #1a58a0;
     font-size: 18px;
     line-height: 20px;
     font-weight: 700;
@@ -1563,7 +1563,7 @@
     padding-bottom: 14px;
 }
 .comment-box .single-comment-box .text-holder .top h3 {
-    color: #2739a7;
+    color: #1a58a0;
     font-size: 18px;
     line-height: 20px;
     font-weight: 700;

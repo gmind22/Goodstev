@@ -824,7 +824,7 @@ li{
     background: #E31C79;
 }
 .switcher #styleOptions li a.violet-color {
-    background: #6936d8;
+    background: #1a58a0;
 }
 .switcher #styleOptions li a.crimson-color {
     background: #ba0913;
@@ -897,7 +897,7 @@ li{
     top: 0;
     width: 100%;
     height: 100%;
-    background: #2739a7;
+    background: #1a58a0;
 }
 
 
@@ -1526,7 +1526,7 @@ select:focus {
     display: inline-block;
     width: 25px;
     height: 1px;
-    background: #2739a7;
+    background: #1a58a0;
 }
 .sec-title .sub-title h5 {
     position: relative;
@@ -1915,7 +1915,7 @@ select:focus {
     position: relative;
     display: block;
     overflow: hidden;
-    background: #2739a7;
+    background: #1a58a0;
 }
 .brochure-area .container-fluid{
     display: flex;
@@ -1978,7 +1978,7 @@ select:focus {
     display: inline-block;
     top: 3px;
     font-size: 20px;
-    color: #2739a7;
+    color: #1a58a0;
     padding-right: 10px;
 }
 
@@ -2351,7 +2351,7 @@ select:focus {
     font-size: 130px;    
 }
 .mission-vision-style2_single_box:hover .icon span::before{
-    color: #2739a7;
+    color: #1a58a0;
 }
 
 .mission-vision-style2_single_box .inner_box{
@@ -2419,7 +2419,7 @@ select:focus {
 .expertise-info-area{
     position: relative;
     display: block;
-    background: #2739a7;
+    background: #1a58a0;
 }
 .expertise-info-area .layer_outer{
     position: absolute;

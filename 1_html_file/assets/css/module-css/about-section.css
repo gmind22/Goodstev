@@ -76,7 +76,7 @@
     align-items: center;
 }
 .about-style1-image-box ul li .image_box .overlay-box .top .counting span {
-    color: #2739a7;
+    color: #1a58a0;
     font-size: 48px;
     line-height: 50px;
     font-weight: 600;
@@ -91,7 +91,7 @@
     position: relative;
     display: inline-block;
     padding-left: 3px;
-    color: #2739a7;
+    color: #1a58a0;
     font-size: 20px;
     font-weight: 700;
 }
@@ -621,11 +621,11 @@
     bottom: 0;
     right: 0;
     height: 2px;
-    background: #2739a7;
+    background: #1a58a0;
     content: "";
 }
 .video-gallery_box_3 .title h5{
-    color: #2739a7;
+    color: #1a58a0;
     font-size: 18px;
     line-height: 28px;
     font-weight: 700;
@@ -843,7 +843,7 @@
     display: block;
     padding-left: 65px;
     padding-right: 120px;
-    background: #2739a7;
+    background: #1a58a0;
     padding-top: 41px;
     padding-bottom: 41px;
 }
@@ -900,7 +900,7 @@
     color: #ffffff;
 }
 .about-style3-area.about-page2 .about-style3_text_box .sec-title h2 span {
-    color: #2739a7;
+    color: #1a58a0;
 }
 
 

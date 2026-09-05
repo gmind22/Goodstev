@@ -440,11 +440,11 @@
     z-index: 1;
 }
 .single-team-item.v2 .img-holder .inner:after {
-    background: #2739a7;
+    background: #1a58a0;
     opacity: 0.70;
 }
 .single-team-item.v2:hover .title-holder h3 a{
-    color: #2739a7;
+    color: #1a58a0;
 }
 
 
