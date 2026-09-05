@@ -189,9 +189,10 @@
     height: 100px;
     border-radius: 50%;
 }
-.faq-style1-image-box .overlay-content .icon-box span::before {
-    font-size: 65px;
-    color: #ffffff;
+.faq-style1-image-box .overlay-content .icon-box img {
+    display: block;
+    width: 78px;
+    height: auto;
 }
 
 

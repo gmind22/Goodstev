@@ -1356,6 +1356,12 @@
 .sec-title h2 {
     font-size: 34px;
 }   
+.features-style1-area .sec-title h2 {
+    font-size: 30px;
+}
+.features-style1-area .sec-title h2 br {
+    display: block;
+}
 .sec-title h2 br{
     display: none;
 } 
