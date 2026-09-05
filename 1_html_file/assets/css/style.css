@@ -82,6 +82,15 @@
 @import url(../css/module-css/slogan-section.css);
 @import url(../css/module-css/partner-section.css);
 
+.blog-style1-area,
+.blog-style2-area,
+.blog-style3-area,
+.blog-style4-area,
+.blog-style5-area,
+#blog {
+    display: none;
+}
+
 
 
 
