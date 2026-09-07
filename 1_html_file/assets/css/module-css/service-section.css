@@ -51,6 +51,9 @@
 .service-style1_title .sec-title .sub-title .border-box {
     background: #ffffff;
 }
+.service-style1_title .sec-title .sub-title h5 {
+    color: #ffffff;
+}
 .service-style1_title .sec-title h2 {
     color: #ffffff;
     font-size: 42px;
@@ -178,6 +181,7 @@
     margin-top: 17px;
 }
 .single-service-style1 .text-holder .readmore-button a{
+    color: #ffffff;
     font-size: 14px;
     line-height: 24px;
     font-weight: 700;
@@ -188,7 +192,7 @@
 .single-service-style1 .text-holder .readmore-button a span:before {
     position: relative;
     display: inline-block;
-    color: #e2e5f3;
+    color: #ffffff;
     font-size: 20px;
     padding-right: 10px;
     top: 3px;
