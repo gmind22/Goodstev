@@ -2675,3 +2675,182 @@ select:focus {
     padding-left: 40px;
     padding-right: 40px;
 }
+
+/* Shared secondary-page header treatment */
+.secondary-header .header-top,
+.secondary-header .header,
+.secondary-header .header-top-style3 {
+    display: none;
+}
+
+.secondary-header .header-bottom,
+.secondary-header .header-bottom .outer-box {
+    background: #1a58a0 !important;
+}
+
+.secondary-header .header-style3,
+.secondary-header .header-style4,
+.secondary-header .header-style5 {
+    background: #1a58a0 !important;
+}
+
+.secondary-header .header-style3 .outer-box,
+.secondary-header .header-style5_left,
+.secondary-header .header-style5_right,
+.secondary-header .header-style5_right .nav-outer,
+.secondary-header .header-style5_right .main-menu {
+    background: transparent !important;
+}
+
+.secondary-header .header-style3 .outer-box {
+    background: #1a58a0 !important;
+}
+
+.secondary-header .header-style3.header-style5,
+.secondary-header .header-style3.header-style5 .outer-box,
+.secondary-header .header-style5_right,
+.secondary-header .header-style5_right .nav-outer,
+.secondary-header .header-style5_right .main-menu,
+.secondary-header .header-style3.header-style5 .navigation {
+    height: 75px;
+}
+
+.secondary-header .header-style5_left {
+    display: none;
+}
+
+@media only screen and (min-width: 992px) {
+    .secondary-header .header-style5_right {
+        float: none;
+        width: 100%;
+    }
+
+    .secondary-header .header-style5_right .nav-outer {
+        float: none;
+    }
+}
+
+.secondary-header .header-bottom .outer-box {
+    display: flex;
+    align-items: center;
+}
+
+.secondary-header .main-menu .navigation > li > a.home {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    width: 190px;
+    height: 75px;
+    padding: 0;
+}
+
+.secondary-header .home-logo-icon {
+    display: block;
+    flex: 0 0 61px;
+    width: 61px;
+    height: 61px;
+    background: url('../images/resources/logo.png') left center / 183px 61px no-repeat;
+}
+
+.secondary-header .home-logo-wordmark {
+    display: block;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.secondary-header .home-logo-wordmark small {
+    display: block;
+    margin-top: 4px;
+    color: #ffffff;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.secondary-header .mobile-menu .social-links {
+    display: none;
+}
+
+.secondary-header .sidebar-details {
+    padding: 0 25px 25px;
+    color: rgba(255, 255, 255, .72);
+}
+
+.secondary-header .sidebar-eyebrow {
+    margin: 0 0 22px;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.secondary-header .sidebar-links {
+    margin: 0 0 28px;
+    padding: 0 0 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, .16);
+}
+
+.secondary-header .sidebar-links li {
+    display: inline-block;
+    margin: 0 14px 8px 0;
+}
+
+.secondary-header .sidebar-links a,
+.secondary-header .sidebar-contact a {
+    color: #ffffff;
+}
+
+.secondary-header .sidebar-contact h3 {
+    margin: 0 0 18px;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.secondary-header .sidebar-contact p {
+    margin: 0 0 18px;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.secondary-header .sidebar-contact strong {
+    color: #ffffff;
+}
+
+.secondary-header .sidebar-social-links {
+    display: flex;
+    gap: 8px;
+    margin-top: 25px;
+}
+
+.secondary-header .sidebar-social-links a {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(255, 255, 255, .3);
+    color: #ffffff;
+    line-height: 30px;
+    text-align: center;
+}
+
+@media only screen and (max-width: 1199px) {
+    .secondary-header .main-menu .navigation > li > a.home {
+        width: 150px;
+    }
+
+    .secondary-header .home-logo-icon {
+        flex-basis: 48px;
+        width: 48px;
+        height: 48px;
+        background-size: 144px 48px;
+    }
+
+    .secondary-header .home-logo-wordmark {
+        font-size: 15px;
+    }
+
+    .secondary-header .home-logo-wordmark small {
+        font-size: 7px;
+    }
+}

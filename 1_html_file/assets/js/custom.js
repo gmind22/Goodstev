@@ -184,6 +184,62 @@ function headerStyle() {
     }
 }
 headerStyle();
+// Normalize the shared secondary-page header and its mobile drawer.
+$('.main-header').each(function() {
+    var header = $(this);
+    if (header.find('.home-logo-icon').length) {
+        return;
+    }
+
+    header.addClass('secondary-header');
+
+    var homeLink = header.find('.main-menu .navigation > li > a.home').first();
+    if (homeLink.length) {
+        homeLink.html('<span class="home-logo-icon" aria-hidden="true"></span><span class="home-logo-wordmark">Goodstev<small>Integrated Services</small></span><span class="sr-only">Goodstev Integrated Services</span>');
+    }
+
+    header.find('.main-menu .navigation > li.dropdown').each(function() {
+        var item = $(this);
+        var link = item.children('a').first();
+        if ($.trim(link.text()).toLowerCase() === 'about us') {
+            item.removeClass('dropdown');
+            item.children('ul, .dropdown-btn').remove();
+            link.attr('href', 'about-2.html');
+        }
+    });
+
+    var mobileHome = header.find('.mobile-menu .menu-outer a.home').first();
+    if (mobileHome.length) {
+        mobileHome.html('<span class="home-logo-icon" aria-hidden="true"></span><span class="home-logo-wordmark">Goodstev<small>Integrated Services</small></span><span class="sr-only">Goodstev Integrated Services</span>');
+    }
+
+    header.find('.mobile-menu .menu-outer .navigation > li.dropdown').each(function() {
+        var item = $(this);
+        var link = item.children('a').first();
+        if ($.trim(link.text()).toLowerCase() === 'about us') {
+            item.removeClass('dropdown');
+            item.children('ul, .dropdown-btn').remove();
+            link.attr('href', 'about-2.html');
+        }
+    });
+
+    var drawer = header.find('.mobile-menu .menu-box');
+    if (drawer.length && !drawer.find('.sidebar-details').length) {
+        drawer.find('.menu-outer').first().before(
+            '<div class="sidebar-details">' +
+                '<p class="sidebar-eyebrow">Engineering &bull; Construction &bull; Oil &amp; Gas</p>' +
+                '<ul class="sidebar-links"><li><a href="#">Investors</a></li><li><a href="#">Careers</a></li><li><a href="#">Downloads</a></li></ul>' +
+                '<div class="sidebar-contact"><h3>Contact Us</h3>' +
+                    '<p><strong>Call Us Today</strong><br><a href="tel:+2347069755962">+2347069755962</a></p>' +
+                    '<p><strong>Working Hours</strong><br>Mon - Fri: 8am to 6pm</p>' +
+                    '<p><strong>Visit Us</strong><br>No. 10, Road 7 Treasure Estate<br>Rumuodara, Port Harcourt</p>' +
+                '</div>' +
+                '<div class="sidebar-social-links"><a href="#" aria-label="Facebook"><i class="fa fa-facebook"></i></a><a href="#" aria-label="Twitter"><i class="fa fa-twitter"></i></a><a href="#" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a><a href="#" aria-label="Pinterest"><i class="fa fa-pinterest"></i></a></div>' +
+            '</div>'
+        );
+    }
+});
+
 
 
 
