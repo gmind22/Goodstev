@@ -530,6 +530,67 @@
 
 /*** 
 =============================================
+    Dark Footer Color Scheme (.dark-footer)
+    Applied to <footer class="footer-area dark-footer">
+    used by all pages and by assets/partials/footer.html
+=============================================
+***/
+.footer-area {
+    background: #080d2e;
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+.footer-area .footer-left-box::before {
+    background: rgba(255, 255, 255, 0.03);
+}
+.footer-area .single-footer-widget .title h3 {
+    color: #ffffff;
+}
+.footer-area .single-footer-widget .our-company-info .text-box p {
+    color: #839ab2;
+}
+.footer-area .footer-social-links .inner_title h3 {
+    color: #ffffff;
+}
+.footer-area .footer-widget-links1 li a {
+    color: #839ab2;
+}
+.footer-area .footer-widget-links1 li:hover a {
+    color: #ffffff;
+}
+.footer-area .single-footer-widget .footer-contact-info ul li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+.footer-area .single-footer-widget .footer-contact-info ul li .text p,
+.footer-area .single-footer-widget .footer-contact-info ul li .text a {
+    color: #839ab2;
+}
+.footer-area .copyright-text p {
+    color: #839ab2;
+}
+.footer-area .copyright-text p a {
+    color: #ffffff;
+}
+.footer-area .footer-menu-style1 ul li:before {
+    background: rgba(255, 255, 255, 0.30);
+}
+.footer-area .footer-menu-style1 ul li a {
+    color: #839ab2;
+}
+.footer-area .footer-menu-style1 ul li a:hover {
+    color: #ffffff;
+}
+.footer-area .social-links-style1 li a i {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: rgba(255, 255, 255, 0.75);
+}
+.footer-area .social-links-style1 li a:hover i {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #080d2e;
+}
+/*** 
+=============================================
     Footer Style2 area style
 =============================================
 ***/
