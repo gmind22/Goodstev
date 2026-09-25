@@ -23,6 +23,40 @@
     background-position: top left;
 }
 
+.faq-style1-area .layer-outer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+}
+
+/* Text color for faq style 1 content */
+.faq-style1-content,
+.faq-style1-content h2,
+.faq-style1-content h5,
+.faq-style1-content p,
+.faq-style1-content .sec-title h2,
+.faq-style1-content .sec-title h5,
+.faq-style1-content .sec-title .text p {
+    color: #ffffff;
+}
+
+/* Text color for accordion content in faq style 1 area */
+.faq-style1-area .accordion-box .accordion .accord-content p {
+    color: #ffffff;
+}
+
+.faq-style1-area .accordion-box .accordion .accord-btn h4 {
+    color: #ffffff;
+}
+
+.faq-style1-area .accordion-box .accordion .accord-btn.active h4 {
+    color: #ffffff;
+}
+
 .faq-style1-content {
     position: relative;
     display: block;
@@ -66,7 +100,7 @@
     transition: all 500ms ease;
 }
 .accordion-box .accordion .accord-btn h4 {
-    color: #222222;
+    color: #ffffff;
     font-size: 18px;
     line-height: 28px;
     font-weight: 600;
@@ -81,7 +115,7 @@
     width: 30px;
     height: 30px;
     background: #ffffff;
-    color: #222222;
+    color: #000000;
     font-size: 14px;
     line-height: 30px;
     font-weight: 600;
@@ -94,7 +128,7 @@
     position: relative;
 }
 .accordion-box .accordion .accord-btn.active h4{
-    color: #1a58a0;
+    color: #ffffff;
 }
 .accordion-box .accordion .accord-btn.active:after{
     content: "\f115";

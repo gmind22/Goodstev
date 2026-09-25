@@ -201,7 +201,7 @@
                     </div>
 
                     <div class="header-style5_right__btn">
-                        <a class="btn-one" href="#"><span class="txt"><i class="left flaticon-login"></i>Get A Quote</span></a>
+                        <a class="btn-one" href="contact.html?type=quote#contact-form"><span class="txt"><i class="left flaticon-login"></i>Get A Quote</span></a>
                     </div> 
 
                 </div> 
@@ -353,6 +353,7 @@
                                     </div>
                                     <div class="button-box text-center">
                                         <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="">
+                                        <input id="form_type" name="form_type" type="hidden" value="General Enquiry">
                                         <button class="btn-one" type="submit" data-loading-text="Please wait...">
                                             <span class="txt"><i class="left flaticon-login"></i>Send Message</span>
                                         </button> 
@@ -699,6 +700,13 @@
 
 <!-- thm custom script -->
 <script src="assets/js/custom.js"></script>
+<script>
+    // Tag enquiries opened via a "Get A Quote" link (?type=quote) so the backend can separate them from general contact messages.
+    if (new URLSearchParams(window.location.search).get('type') === 'quote') {
+        var formTypeField = document.getElementById('form_type');
+        if (formTypeField) { formTypeField.value = 'Quote Request'; }
+    }
+</script>
 
 
 

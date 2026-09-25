@@ -122,6 +122,34 @@
 
 
 
+/*** 
+=============================================
+    Newsletter row alignment
+    Keeps the paragraph and the quote button on
+    one line and centres the row on the page
+=============================================
+***/
+@media only screen and (min-width: 1200px) {
+    .subscribe-content-box {
+        justify-content: center;
+        align-items: center;
+        gap: 0 30px;
+    }
+    .subscribe-content-box.project-cta {
+        align-items: flex-end;
+    }
+    .subscribe-content-box .subscribe-box.btn-only {
+        width: auto;
+        max-width: none;
+        padding: 0;
+        flex: 0 0 auto;
+    }
+    .subscribe-content-box .subscribe-box.btn-only .btn-one {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
 .subscribe-area.gray-bg{
     background: #e9ebf4;    
 }
