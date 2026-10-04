@@ -842,9 +842,6 @@
     Features Style2 Area About Page2 Css      
 =============================================
 ***/
-.features-style2-area.about-page2{
-
-}
 .features-style2-area.about-page2 .single-features-style2 .btn-one::before {
     background: #fff;
 }
@@ -852,6 +849,34 @@
 .features-style2-area.about-page2 .single-features-style2:hover .btn-one,
 .features-style2-area.about-page2 .single-features-style2.active .btn-one {
     color: #222;
+}
+
+.features-style2-area.about-page2 .single-features-style2:hover .single-features-style2-bg::before,
+.features-style2-area.about-page2 .single-features-style2.active .single-features-style2-bg::before {
+    top: 0;
+    bottom: 0;
+    height: auto;
+    background: linear-gradient(to bottom, rgba(8, 13, 46, 0.88), rgba(8, 13, 46, 0.78)), linear-gradient(#ad1437, #ad1437);
+    background-size: 100% calc(100% - 4px), 100% 4px;
+    background-position: top, bottom;
+    background-repeat: no-repeat;
+}
+
+@media only screen and (min-width: 1200px) {
+    .features-style2-area.about-page2 .row > .col-xl-4 {
+        display: flex;
+    }
+
+    .features-style2-area.about-page2 .single-features-style2 {
+        width: 100%;
+        height: calc(100% - 26px);
+        transition: height 500ms ease;
+    }
+
+    .features-style2-area.about-page2 .single-features-style2.active,
+    .features-style2-area.about-page2 .single-features-style2:hover {
+        height: auto;
+    }
 }
 
 

@@ -6,6 +6,15 @@
     pointer-events: none;
 }
 
+.main-header.header-style-one:not(.secondary-header) .sticky-header {
+    pointer-events: auto;
+    box-shadow: none;
+}
+
+.main-header.header-style-one .responsive-header-brand {
+    display: none;
+}
+
 .main-slider.style1 {
     margin-top: 0 !important;
 }
@@ -206,6 +215,41 @@
     text-transform: uppercase;
 }
 
+.sidebar-navigation-pages > ul {
+    display: none;
+}
+
+.sidebar-navigation-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 0;
+    border: 0;
+    background: transparent;
+    color: #ffffff;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: left;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.sidebar-navigation-toggle:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+}
+
+.sidebar-navigation-toggle span {
+    transition: transform 200ms ease;
+}
+
+.sidebar-navigation-toggle[aria-expanded="true"] span {
+    transform: rotate(90deg);
+}
+
 .sidebar-navigation ul {
     margin: 0 0 5px;
     padding: 0 0 0 15px;
@@ -239,6 +283,35 @@
         display: block;
     }
 
+    .main-header.header-style-one .header-bottom_left {
+        display: none;
+    }
+
+    .main-header.header-style-one .responsive-header-brand {
+        display: block;
+        flex: 0 0 auto;
+        width: 175px;
+    }
+
+    .main-header.header-style-one .responsive-header-brand a,
+    .main-header.header-style-one .responsive-header-brand img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .main-header.header-style-one .responsive-header-brand a {
+        line-height: 0;
+    }
+
+    .main-header.header-style-one .header-bottom_right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-left: auto;
+        margin-right: 0;
+    }
+
     .main-header.header-style-one .main-menu .navigation > li > a.home,
     .main-header.header-style-one .main-menu .navigation > li > a.home {
         width: 150px;
@@ -261,5 +334,15 @@
 
     .main-header.header-style-one .outer-search-box-style1 {
         display: none;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .main-header.header-style-one .responsive-header-brand {
+        width: 130px;
+    }
+
+    .main-header.header-style-one .header-bottom_right {
+        gap: 0;
     }
 }

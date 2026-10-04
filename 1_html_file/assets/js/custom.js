@@ -33,7 +33,7 @@
 
 //Submenu Dropdown Toggle
 if($('.main-header li.dropdown ul').length){
-    $('.main-header .navigation li.dropdown').append('<div class="dropdown-btn"><span class="fa fa-angle-right"></span></div>');
+    $('.main-header .navigation li.dropdown > a').after('<div class="dropdown-btn"><span class="fa fa-angle-right"></span></div>');
 }
 
 
@@ -46,18 +46,37 @@ if($('.mobile-menu').length){
     var mobileMenuContent = $('.main-header .nav-outer .main-menu').html();
     $('.mobile-menu .menu-box .menu-outer').append(mobileMenuContent);
     $('.sticky-header .main-menu').append(mobileMenuContent);
+
+    $('.sticky-header .main-menu .navigation > li').first().remove();
+
+    $('.sidebar-navigation-toggle').on('click', function() {
+        var toggle = $(this);
+        var expanded = toggle.attr('aria-expanded') === 'true';
+        toggle.attr('aria-expanded', String(!expanded));
+        toggle.next('ul').stop(true, true).slideToggle(250);
+    });
+
+    $('.sticky-header .main-menu .navigation > li.dropdown').each(function() {
+        var item = $(this);
+        var link = item.children('a').first();
+        if ($.trim(link.text()).toLowerCase() === 'about us') {
+            item.removeClass('dropdown');
+            item.children('ul, .dropdown-btn').remove();
+            link.attr('href', 'about-2.html');
+        }
+    });
     
     //Dropdown Button
     $('.mobile-menu li.dropdown .dropdown-btn').on('click', function() {
         $(this).toggleClass('open');
-        $(this).prev('ul').slideToggle(500);
+        $(this).next('ul').slideToggle(500);
     });
     
     
     
     //Dropdown Button
     $('.mobile-menu li.dropdown .dropdown-btn').on('click', function() {
-        $(this).prev('.megamenu').slideToggle(900);
+        $(this).next('.megamenu').slideToggle(900);
     });
 
     
@@ -319,12 +338,12 @@ function timepicker () {
 //Hide Loading Box (Preloader)
 function handlePreloader() {
     if($('.loader-wrap').length){
-        $('.loader-wrap').delay(1000).fadeOut(500);
+        $('.loader-wrap').delay(450).fadeOut(350);
     }
-    TweenMax.to($(".loader-wrap .overlay"), 1.2, {
+    TweenMax.to($(".loader-wrap .overlay"), 0.8, {
         force3D: true,
         left: "100%",
-        ease: Expo.easeInOut,
+        ease: Power2.easeInOut,
     });
 }
 

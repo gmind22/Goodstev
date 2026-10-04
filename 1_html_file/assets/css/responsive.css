@@ -1568,6 +1568,14 @@
     padding-top: 110px;
     padding-right: 30px;
     padding-bottom: 110px;
+    text-align: center;
+}
+.footer-left-box .our-company-info {
+    text-align: center;
+}
+.footer-left-box .footer-social-links {
+    justify-content: center;
+    text-align: center;
 }
 .footer-social-links {
     align-items: center;
@@ -1585,6 +1593,9 @@
     margin-left: 0px;
     padding-top: 110px;
     padding-bottom: 110px;
+}
+.footer-rigth-box > .row > div:nth-child(-n+2) {
+    text-align: center;
 }
 
 .single-footer-widget.marbtm50{
