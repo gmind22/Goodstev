@@ -43,8 +43,15 @@ $mail = new PHPMailer();
 $mail->isMail();
 $mail->CharSet = 'UTF-8';
 
-// Replace this placeholder with the official cPanel mailbox after hosting is configured.
-$toemail = 'dummy@example.com';
+// Configure GOODSTEV_CONTACT_RECIPIENT in the PHP hosting environment.
+$toemail = trim((string) getenv('GOODSTEV_CONTACT_RECIPIENT'));
+if (!filter_var($toemail, FILTER_VALIDATE_EMAIL)) {
+    http_response_code(503);
+    $response['message'] = 'The contact form is not configured yet. Please call us instead.';
+    echo json_encode($response);
+    exit;
+}
+
 $toname = 'Goodstev Website';
 
 $safeName = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');

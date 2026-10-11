@@ -109,37 +109,6 @@ if($('.scroll-to-target').length){
 
 
 
-//Parallax Scene for Icons
-if($('.parallax-scene-1').length){
-    var scene = $('.parallax-scene-1').get(0);
-    var parallaxInstance = new Parallax(scene);
-}
-if($('.parallax-scene-2').length){
-    var scene = $('.parallax-scene-2').get(0);
-    var parallaxInstance = new Parallax(scene);
-}
-if($('.parallax-scene-3').length){
-    var scene = $('.parallax-scene-3').get(0);
-    var parallaxInstance = new Parallax(scene);
-}
-if($('.parallax-scene-4').length){
-    var scene = $('.parallax-scene-4').get(0);
-    var parallaxInstance = new Parallax(scene);
-}
-if($('.parallax-scene-5').length){
-    var scene = $('.parallax-scene-5').get(0);
-    var parallaxInstance = new Parallax(scene);
-}
-
-
-
-//Add One Page nav
-if($('.scroll-nav').length) {
-    $('.scroll-nav').onePageNav();
-}
-
-
-
 // body-layout
 function bodylayout() {
     if ($('.boxed_switch_menu').length) {
@@ -247,13 +216,11 @@ $('.main-header').each(function() {
         drawer.find('.menu-outer').first().before(
             '<div class="sidebar-details">' +
                 '<p class="sidebar-eyebrow">Engineering &bull; Construction &bull; Oil &amp; Gas</p>' +
-                '<ul class="sidebar-links"><li><a href="#">Investors</a></li><li><a href="#">Careers</a></li><li><a href="#">Downloads</a></li></ul>' +
                 '<div class="sidebar-contact"><h3>Contact Us</h3>' +
                     '<p><strong>Call Us Today</strong><br><a href="tel:+2347069755962">+2347069755962</a></p>' +
                     '<p><strong>Working Hours</strong><br>Mon - Fri: 8am to 6pm</p>' +
-                    '<p><strong>Visit Us</strong><br>No. 10, Road 7 Treasure Estate<br>Rumuodara, Port Harcourt</p>' +
+                    '<p><strong>Visit Us</strong><br>No 1 road 1 Extension Federal low cost Agip housing Estate,<br>Rumueme, Port harcourt</p>' +
                 '</div>' +
-                '<div class="sidebar-social-links"><a href="#" aria-label="Facebook"><i class="fa fa-facebook"></i></a><a href="#" aria-label="Twitter"><i class="fa fa-twitter"></i></a><a href="#" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a><a href="#" aria-label="Pinterest"><i class="fa fa-pinterest"></i></a></div>' +
             '</div>'
         );
     }
@@ -542,7 +509,8 @@ if ($('.banner-carousel').length) {
     $('.banner-carousel').owlCarousel({
         animateOut: 'fadeOut',
         animateIn: 'fadeIn',
-        loop:true,
+        loop:false,
+        rewind:true,
         margin:0,
         dots: true,
         nav:true,
@@ -1235,14 +1203,6 @@ if($('.accordion-box').length){
 
 
 
-//====== Magnific Popup
-$('.video-popup').magnificPopup({
-    type: 'iframe'
-    // other options
-});
-
-
-
 //LightBox / Fancybox
 if($('.lightbox-image').length) {
     $('.lightbox-image').fancybox({
@@ -1324,26 +1284,36 @@ if($("#contact-form, #thm-form-style2").length){
           }
           var form_btn_old_msg = form_btn.html();
           form_btn.html(form_btn.prop('disabled', true).data("loading-text") || "Please wait...");
-          $(form).ajaxSubmit({
-            dataType:  'json',
-            success: function(data) {
-              if (data.status === 'true') {
+          fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          })
+            .then(function(response) {
+              return response.json().then(function(data) {
+                return { response: response, data: data };
+              });
+            })
+            .then(function(result) {
+              form_btn.prop('disabled', false).html(form_btn_old_msg);
+              if (result.response.ok && result.data.status === 'true') {
                 $(form).find('input:not([type="hidden"]), textarea').val('');
                 form_result_div.removeClass('alert-danger').addClass('alert-success');
-              } else {
-                form_result_div.removeClass('alert-success').addClass('alert-danger');
+                form_result_div.text(result.data.message).fadeIn('slow');
+                setTimeout(function(){ form_result_div.fadeOut('slow'); }, 6000);
+                return;
               }
-              form_btn.prop('disabled', false).html(form_btn_old_msg);
-              form_result_div.html(data.message).fadeIn('slow');
-              setTimeout(function(){ form_result_div.fadeOut('slow'); }, 6000);
-            },
-            error: function() {
+
+              form_result_div.removeClass('alert-success').addClass('alert-danger')
+                .text(result.data.message || 'The form could not be submitted. Please try again later.')
+                .fadeIn('slow');
+            })
+            .catch(function() {
               form_btn.prop('disabled', false).html(form_btn_old_msg);
               form_result_div.removeClass('alert-success').addClass('alert-danger')
-                .html('The form could not be submitted. Please try again later.')
+                .text('The form could not be submitted. Please try again later.')
                 .fadeIn('slow');
-            }
-          });
+            });
         }
     });
 }
@@ -1400,15 +1370,3 @@ jQuery(window).on('load', function() {
         
     })(jQuery);
 });
-
-
-
-
-
-
-
-
-
-
-
-$(window).enllax();

@@ -2379,6 +2379,7 @@
     margin-top: 100px;
     padding: 152px 0 85px;
 }
+.breadcrumb-area .title h1,
 .breadcrumb-area .title h2 {
     font-size: 40px;
     margin: 0 0 17px;
@@ -2835,6 +2836,7 @@
 .main-slider .content .big-title {
     margin-top: 20px;
 }
+.main-slider .content .big-title h1,
 .main-slider .content .big-title h2 {
     font-size: 40px;
 }
@@ -2871,6 +2873,7 @@
 .main-slider .content .big-title {
     margin-top: 20px;
 }
+.main-slider .content .big-title h1,
 .main-slider .content .big-title h2 {
     font-size: 40px;
 }
@@ -2957,6 +2960,7 @@
 .main-slider .content .big-title {
     margin-top: 20px;
 }
+.main-slider .content .big-title h1,
 .main-slider .content .big-title h2 {
     font-size: 30px;
 }
@@ -3089,6 +3093,7 @@
 .main-slider .content .big-title {
     margin-top: 20px;
 }
+.main-slider .content .big-title h1,
 .main-slider .content .big-title h2 {
     font-size: 30px;
     font-weight: 600;
@@ -3263,7 +3268,6 @@
 } 
 
 }
-
 
 
 

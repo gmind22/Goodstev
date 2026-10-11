@@ -54,6 +54,7 @@
     display: block;
     overflow: hidden;
 }
+.breadcrumb-area .title h1,
 .breadcrumb-area .title h2{
     color: #ffffff;
     font-size: 60px;
@@ -125,9 +126,9 @@
     padding-top: 188px;
     padding-bottom: 110px;
 }
+.breadcrumb-style2-area .title h1,
 .breadcrumb-style2-area .title h2 {
     margin: 0 0 21px;
 }
-
 
 
