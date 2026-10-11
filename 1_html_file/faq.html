@@ -446,7 +446,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="thm-form-style2">
-                    <form id="thm-form-style2" name="thm_form_style2" class="" action="#" method="post">
+                    <form id="thm-form-style2" name="thm_form_style2" class="" action="assets/inc/sendmail.php" method="post">
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="input-box"> 
@@ -471,7 +471,9 @@
                                     <textarea name="form_message" placeholder="Write message" required=""></textarea>
                                 </div>
                                 <div class="button-box text-center">
-                                    <button class="btn-one" type="submit"><span class="txt"><span class="txt"><i class="left flaticon-login"></i></span>Send Message</span></button>
+                                    <input name="form_botcheck" type="hidden" value="">
+                                    <input name="form_type" type="hidden" value="FAQ Enquiry">
+                                    <button class="btn-one" type="submit" data-loading-text="Please wait..."><span class="txt"><span class="txt"><i class="left flaticon-login"></i></span>Send Message</span></button>
                                 </div>    
                             </div>
                         </div>

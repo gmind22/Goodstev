@@ -1312,25 +1312,36 @@ if ($("[data-aos]").length) {
 
 
 
-//Contact Form Validation
-if($("#contact-form").length){
-    $("#contact-form").validate({
+// Contact and FAQ form validation
+if($("#contact-form, #thm-form-style2").length){
+    $("#contact-form, #thm-form-style2").validate({
         submitHandler: function(form) {
           var form_btn = $(form).find('button[type="submit"]');
-          var form_result_div = '#form-result';
-          $(form_result_div).remove();
-          form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
+          var form_result_div = $(form).find('.form-result');
+          if (!form_result_div.length) {
+            form_btn.before('<div class="form-result alert" role="alert" style="display: none;"></div>');
+            form_result_div = $(form).find('.form-result');
+          }
           var form_btn_old_msg = form_btn.html();
-          form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
+          form_btn.html(form_btn.prop('disabled', true).data("loading-text") || "Please wait...");
           $(form).ajaxSubmit({
             dataType:  'json',
             success: function(data) {
-              if( data.status = 'true' ) {
-                $(form).find('.form-control').val('');
+              if (data.status === 'true') {
+                $(form).find('input:not([type="hidden"]), textarea').val('');
+                form_result_div.removeClass('alert-danger').addClass('alert-success');
+              } else {
+                form_result_div.removeClass('alert-success').addClass('alert-danger');
               }
               form_btn.prop('disabled', false).html(form_btn_old_msg);
-              $(form_result_div).html(data.message).fadeIn('slow');
-              setTimeout(function(){ $(form_result_div).fadeOut('slow') }, 6000);
+              form_result_div.html(data.message).fadeIn('slow');
+              setTimeout(function(){ form_result_div.fadeOut('slow'); }, 6000);
+            },
+            error: function() {
+              form_btn.prop('disabled', false).html(form_btn_old_msg);
+              form_result_div.removeClass('alert-success').addClass('alert-danger')
+                .html('The form could not be submitted. Please try again later.')
+                .fadeIn('slow');
             }
           });
         }

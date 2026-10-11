@@ -3,75 +3,83 @@
 require_once('phpmailer/class.phpmailer.php');
 require_once('phpmailer/class.smtp.php');
 
-$mail = new PHPMailer();
+header('Content-Type: application/json; charset=utf-8');
 
-//$mail->SMTPDebug = 3; // Enable verbose debug output
-$mail->isSMTP(); // Set mailer to use SMTP
-$mail->Host = 'steelthemes.com'; // Specify main and backup SMTP servers
-$mail->SMTPAuth = true; // Enable SMTP authentication
-$mail->Username = 'cform@steelthemes.com'; // SMTP username
-$mail->Password = 'AsDf12**'; // SMTP password
-$mail->SMTPSecure = true; // Enable TLS encryption, `ssl` also accepted
-$mail->Port = 465; // TCP port to connect to
+$response = array(
+    'message' => 'An unexpected error occurred. Please try again later.',
+    'status' => 'false'
+);
 
-$message = "";
-$status = "false";
-
-if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
- if( $_POST['form_name'] != '' AND $_POST['form_email'] != '' AND $_POST['form_subject'] != '' ) {
-
- $name = $_POST['form_name'];
- $email = $_POST['form_email'];
- $subject = $_POST['form_subject'];
- $phone = $_POST['form_phone'];
- $message = $_POST['form_message'];
-
- $subject = isset($subject) ? $subject : 'New Message | Contact Form';
-
- $botcheck = $_POST['form_botcheck'];
-
- $toemail = 'templatecform@gmail.com'; // Your Email Address
- $toname = 'template_path'; // Your Name
-
- if( $botcheck == '' ) {
-
- $mail->SetFrom( $email , $name );
- $mail->AddReplyTo( $email , $name );
- $mail->AddAddress( $toemail , $toname );
- $mail->Subject = $subject;
-
- $name = isset($name) ? "Name: $name<br><br>" : '';
- $email = isset($email) ? "Email: $email<br><br>" : '';
- $phone = isset($phone) ? "Phone: $phone<br><br>" : '';
- $message = isset($message) ? "Message: $message<br><br>" : '';
-
- $referrer = $_SERVER['HTTP_REFERER'] ? '<br><br><br>This Form was submitted from: ' . $_SERVER['HTTP_REFERER'] : '';
-
- $body = "$name $email $phone $message $referrer";
-
- $mail->MsgHTML( $body );
- $sendEmail = $mail->Send();
-
- if( $sendEmail == true ):
- $message = 'We have <strong>successfully</strong> received your Message and will get Back to you as soon as possible.';
- $status = "true";
- else:
- $message = 'Email <strong>could not</strong> be sent due to some Unexpected Error. Please Try Again later.<br /><br /><strong>Reason:</strong><br />' . $mail->ErrorInfo . '';
- $status = "false";
- endif;
- } else {
- $message = 'Bot <strong>Detected</strong>.! Clean yourself Botster.!';
- $status = "false";
- }
- } else {
- $message = 'Please <strong>Fill up</strong> all the Fields and Try Again.';
- $status = "false";
- }
-} else {
- $message = 'An <strong>unexpected error</strong> occured. Please Try Again later.';
- $status = "false";
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    echo json_encode($response);
+    exit;
 }
 
-$status_array = array( 'message' => $message, 'status' => $status);
-echo json_encode($status_array);
+$name = isset($_POST['form_name']) ? trim($_POST['form_name']) : '';
+$email = isset($_POST['form_email']) ? trim($_POST['form_email']) : '';
+$phone = isset($_POST['form_phone']) ? trim($_POST['form_phone']) : '';
+$subject = isset($_POST['form_subject']) ? trim($_POST['form_subject']) : '';
+$formMessage = isset($_POST['form_message']) ? trim($_POST['form_message']) : '';
+$formType = isset($_POST['form_type']) ? trim($_POST['form_type']) : 'General Enquiry';
+$botcheck = isset($_POST['form_botcheck']) ? trim($_POST['form_botcheck']) : '';
+
+if ($botcheck !== '') {
+    $response['message'] = 'Your submission could not be accepted.';
+    echo json_encode($response);
+    exit;
+}
+
+if ($name === '' || !filter_var($email, FILTER_VALIDATE_EMAIL) || $formMessage === '') {
+    $response['message'] = 'Please provide your name, a valid email address, and a message.';
+    echo json_encode($response);
+    exit;
+}
+
+if ($subject === '') {
+    $subject = $formType;
+}
+
+$mail = new PHPMailer();
+$mail->isMail();
+$mail->CharSet = 'UTF-8';
+
+// Replace this placeholder with the official cPanel mailbox after hosting is configured.
+$toemail = 'dummy@example.com';
+$toname = 'Goodstev Website';
+
+$safeName = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
+$safeEmail = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
+$safePhone = htmlspecialchars($phone, ENT_QUOTES, 'UTF-8');
+$safeSubject = htmlspecialchars($subject, ENT_QUOTES, 'UTF-8');
+$safeFormType = htmlspecialchars($formType, ENT_QUOTES, 'UTF-8');
+$safeMessage = nl2br(htmlspecialchars($formMessage, ENT_QUOTES, 'UTF-8'));
+$referrer = isset($_SERVER['HTTP_REFERER'])
+    ? htmlspecialchars($_SERVER['HTTP_REFERER'], ENT_QUOTES, 'UTF-8')
+    : '';
+
+$body = 'Form type: ' . $safeFormType . '<br><br>'
+    . 'Name: ' . $safeName . '<br><br>'
+    . 'Email: ' . $safeEmail . '<br><br>'
+    . 'Phone: ' . $safePhone . '<br><br>'
+    . 'Subject: ' . $safeSubject . '<br><br>'
+    . 'Message: ' . $safeMessage;
+
+if ($referrer !== '') {
+    $body .= '<br><br>Submitted from: ' . $referrer;
+}
+
+$mail->SetFrom($toemail, $toname);
+$mail->AddReplyTo($email, $name);
+$mail->AddAddress($toemail, $toname);
+$mail->Subject = $subject;
+$mail->MsgHTML($body);
+
+if ($mail->Send()) {
+    $response['message'] = 'Your message was received. We will get back to you as soon as possible.';
+    $response['status'] = 'true';
+} else {
+    $response['message'] = 'Your message could not be sent. Please try again later.';
+}
+
+echo json_encode($response);
 ?>
