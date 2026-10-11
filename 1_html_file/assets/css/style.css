@@ -905,6 +905,37 @@ li{
 
 
 
+/* WhatsApp contact button */
+.whatsapp-float {
+    position: fixed;
+    right: 15px;
+    bottom: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 55px;
+    background: #25d366;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    color: #ffffff;
+    font-size: 30px;
+    line-height: 1;
+    transition: transform 200ms ease, background-color 200ms ease;
+    z-index: 999999998;
+}
+.whatsapp-float:hover,
+.whatsapp-float:focus {
+    background: #128c7e;
+    color: #ffffff;
+    transform: scale(1.08);
+}
+.whatsapp-float:focus {
+    outline: 3px solid #222222;
+    outline-offset: 3px;
+}
+
+
 /*** Scroll To Top style ***/
 .scroll-top {
     position: fixed;

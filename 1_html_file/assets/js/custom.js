@@ -1172,6 +1172,38 @@ if($('.count-box').length){
     },{accY: 0});
 }
 
+function equalizeFaqAccordionButtons() {
+    var $columns = $('.faq-page-area .accordion-box-style3');
+
+    if (!$columns.length) {
+        return;
+    }
+
+    $columns.find('.accord-btn').css('min-height', '');
+
+    $columns.first().find('.accordion').each(function(index) {
+        var maxHeight = 0;
+
+        $columns.each(function() {
+            var $button = $(this).find('.accordion').eq(index).children('.accord-btn');
+
+            if ($button.length) {
+                maxHeight = Math.max(maxHeight, $button.outerHeight());
+            }
+        });
+
+        if (maxHeight) {
+            $columns.each(function() {
+                $(this).find('.accordion').eq(index).children('.accord-btn')
+                    .css('min-height', maxHeight + 'px');
+            });
+        }
+    });
+
+    $(window).off('resize.faqAccordion').on('resize.faqAccordion', function() {
+        equalizeFaqAccordionButtons();
+    });
+}
 
 
 
@@ -1323,6 +1355,7 @@ jQuery(document).on('ready', function () {
         CounterNumberChanger ();
         priceFilter ();
         accordion ();
+        equalizeFaqAccordionButtons ();
         bodylayout ();
         swithcerMenu ();
         onHoverthreeDmovement ();

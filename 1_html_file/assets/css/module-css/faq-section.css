@@ -471,6 +471,9 @@
     border: 1px solid #e9ebf4;
     z-index: 1;
 }
+.accordion-box-style3 .accordion .accord-btn h4 {
+    color: #222222;
+}
 .accordion-box-style3 .accordion .accord-btn.active h4 {
     color: #ffffff;
 }
@@ -513,4 +516,3 @@
     background: #1a58a0;
     border-color: #1a58a0;
 }
-
