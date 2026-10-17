@@ -1552,6 +1552,11 @@
 .subscribe-content-box .subscribe-title {
     padding-left: 0px;
 }
+.subscribe-content-box .subscribe-title h2 {
+    font-size: clamp(20px, 6.4vw, 30px);
+    line-height: 1.2;
+    white-space: nowrap;
+}
 .subscribe-form input[type="email"]{
     margin: 0 auto;
 }
