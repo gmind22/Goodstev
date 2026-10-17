@@ -1322,7 +1322,7 @@ if($("#contact-form, #thm-form-style2").length){
 
 
 // Dom Ready Function
-jQuery(document).on('ready', function () {
+jQuery(function () {
 	(function ($) {
         // add your functions
         languageSwitcher ();
