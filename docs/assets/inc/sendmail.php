@@ -39,12 +39,44 @@ if ($subject === '') {
     $subject = $formType;
 }
 
+// Keep each valid submission in a server-side folder protected from web access.
+$backupDirectory = __DIR__ . '/form-backups';
+$backupSaved = is_dir($backupDirectory) || @mkdir($backupDirectory, 0700, true);
+if ($backupSaved) {
+    $backupRecord = array(
+        'received_at' => gmdate('c'),
+        'form_type' => $formType,
+        'name' => $name,
+        'email' => $email,
+        'phone' => $phone,
+        'subject' => $subject,
+        'message' => $formMessage,
+        'source' => isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : ''
+    );
+    $backupJson = json_encode($backupRecord, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    $backupSaved = $backupJson !== false
+        && @file_put_contents($backupDirectory . '/submissions.jsonl', $backupJson . PHP_EOL, FILE_APPEND | LOCK_EX) !== false;
+}
+
 $mail = new PHPMailer();
-$mail->isMail();
 $mail->CharSet = 'UTF-8';
 
-// Configure GOODSTEV_CONTACT_RECIPIENT in the PHP hosting environment.
-$toemail = trim((string) getenv('GOODSTEV_CONTACT_RECIPIENT'));
+$smtpHost = trim((string) getenv('GOODSTEV_SMTP_HOST'));
+$smtpUsername = trim((string) getenv('GOODSTEV_SMTP_USERNAME'));
+$smtpPassword = (string) getenv('GOODSTEV_SMTP_PASSWORD');
+if ($smtpHost !== '' && $smtpUsername !== '' && $smtpPassword !== '') {
+    $mail->isSMTP();
+    $mail->Host = $smtpHost;
+    $mail->SMTPAuth = true;
+    $mail->Username = $smtpUsername;
+    $mail->Password = $smtpPassword;
+    $mail->SMTPSecure = trim((string) getenv('GOODSTEV_SMTP_SECURE')) ?: 'ssl';
+    $mail->Port = (int) (getenv('GOODSTEV_SMTP_PORT') ?: 465);
+} else {
+    $mail->isMail();
+}
+
+$toemail = trim((string) (getenv('GOODSTEV_CONTACT_RECIPIENT') ?: 'info@goodstev.com'));
 if (!filter_var($toemail, FILTER_VALIDATE_EMAIL)) {
     http_response_code(503);
     $response['message'] = 'The contact form is not configured yet. Please call us instead.';
@@ -78,12 +110,18 @@ if ($referrer !== '') {
 $mail->SetFrom($toemail, $toname);
 $mail->AddReplyTo($email, $name);
 $mail->AddAddress($toemail, $toname);
-$mail->Subject = $subject;
+$mail->Subject = str_replace(array("\r", "\n"), ' ', $subject);
 $mail->MsgHTML($body);
 
-if ($mail->Send()) {
+$emailSent = $mail->Send();
+if ($emailSent && $backupSaved) {
     $response['message'] = 'Your message was received. We will get back to you as soon as possible.';
     $response['status'] = 'true';
+} elseif ($emailSent) {
+    $response['message'] = 'Your message was emailed, but the server backup could not be saved. Please contact us by phone if you need confirmation.';
+    $response['status'] = 'true';
+} elseif ($backupSaved) {
+    $response['message'] = 'Your message was saved, but the email could not be sent. Please try again later or call us.';
 } else {
     $response['message'] = 'Your message could not be sent. Please try again later.';
 }
